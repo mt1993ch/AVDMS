@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACDMS - Agniveer Centralised Data Management System</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div id="app" class="app-container">
+        <!-- Login Section -->
+        <div id="login-section" class="login-container">
+            <div class="login-form">
+                <div class="login-logo mb-4">
+                    <h1>ACDMS</h1>
+                    <p class="text-center">Agniveer Centralised Data Management System</p>
+                </div>
+                
+                <div id="login-error" class="alert alert-danger d-none" role="alert"></div>
+                
+                <form id="login-form">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="username"
+                            required
+                            autocomplete="username"
+                        />
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="password" class="form-label">Password</label>
+                        <input
+                            type="password"
+                            class="form-control"
+                            id="password"
+                            required
+                            autocomplete="current-password"
+                        />
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button 
+                            type="submit" 
+                            class="btn btn-primary"
+                            id="login-button"
+                        >
+                            Login
+                        </button>
+                    </div>
+                    
+                    <div class="mt-3 text-center">
+                        <small class="text-muted">
+                            Developed by ARC Shillong
+                        </small>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Main Application (hidden initially) -->
+        <div id="app-section" class="d-none">
+            <!-- Header -->
+            <header>
+                <nav class="navbar navbar-expand-lg">
+                    <div class="container-fluid">
+                        <a class="navbar-brand d-flex align-items-center" href="#" data-page="home">
+                            <span>ACDMS</span>
+                        </a>
+                        
+                        <button
+                            class="navbar-toggler"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#navbarNav"
+                            aria-controls="navbarNav"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation"
+                        >
+                            <i data-feather="menu"></i>
+                        </button>
+                        
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#" data-page="home" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+                                        <i data-feather="home"></i>
+                                        Home
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" data-page="search" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+                                        <i data-feather="search"></i>
+                                        Search Database
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" data-page="add" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+                                        <i data-feather="user-plus"></i>
+                                        Add Agniveer
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" data-page="manage" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+                                        <i data-feather="database"></i>
+                                        Data Management
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <div class="d-flex align-items-center">
+                                <button
+                                    class="btn btn-sm me-3"
+                                    id="dark-mode-toggle"
+                                    title="Toggle Dark Mode"
+                                >
+                                    <i data-feather="moon"></i>
+                                </button>
+                                
+                                <button
+                                    class="btn btn-outline-light btn-sm"
+                                    id="logout-button"
+                                >
+                                    <i data-feather="log-out"></i>
+                                    Logout
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                
+                <div class="sub-header py-2 px-3">
+                    <div class="container-fluid">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small>
+                                    <i data-feather="shield"></i>
+                                    <span>Agniveer Centralised Data Management System</span>
+                                </small>
+                            </div>
+                            <div>
+                                <small>Developed by ARC Shillong</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Home Page -->
+                <div id="home-page" class="page-content">
+                    <div class="container py-4">
+                        <div class="row mb-4">
+                            <div class="col-12 text-center">
+                                <h1>Welcome to ACDMS</h1>
+                                <p class="lead">
+                                    Agniveer Centralised Data Management System
+                                </p>
+                                <div class="military-border mt-4">
+                                    <p>
+                                        This system allows you to manage and maintain detailed records of Agniveer recruits. 
+                                        Select an option below to get started.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="home-cards">
+                            <div class="card home-card" data-navigate="search">
+                                <div class="home-card-icon">
+                                    <i data-feather="search"></i>
+                                </div>
+                                <h3>Search Database</h3>
+                                <p>Search and filter Agniveer records</p>
+                                <button class="btn btn-outline-primary mt-3">Select</button>
+                            </div>
+
+                            <div class="card home-card" data-navigate="add">
+                                <div class="home-card-icon">
+                                    <i data-feather="user-plus"></i>
+                                </div>
+                                <h3>Add a New Agniveer</h3>
+                                <p>Add a new Agniveer to the database</p>
+                                <button class="btn btn-outline-primary mt-3">Select</button>
+                            </div>
+
+                            <div class="card home-card" data-navigate="manage">
+                                <div class="home-card-icon">
+                                    <i data-feather="database"></i>
+                                </div>
+                                <h3>Data Management</h3>
+                                <p>View, edit, and delete Agniveer records</p>
+                                <button class="btn btn-outline-primary mt-3">Select</button>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-5">
+                            <div class="col-12 text-center">
+                                <p>
+                                    <small class="text-muted">
+                                        ACDMS - Developed by ARC Shillong
+                                    </small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search Database Page -->
+                <div id="search-page" class="page-content d-none">
+                    <div class="container-fluid py-3">
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h2 class="section-title">Search Database</h2>
+                            </div>
+                        </div>
+                        
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                Search Filters
+                            </div>
+                            <div class="card-body">
+                                <form id="search-form">
+                                    <div class="row g-3">
+                                        <div class="col-md-4">
+                                            <label for="search-name" class="form-label">Name</label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="search-name"
+                                                name="name"
+                                                placeholder="Enter name"
+                                            />
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <label for="search-batch" class="form-label">Batch No.</label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="search-batch"
+                                                name="batch_no"
+                                                placeholder="Enter batch number"
+                                            />
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <label for="search-rank" class="form-label">Rank</label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="search-rank"
+                                                name="rank"
+                                                placeholder="Enter rank"
+                                            />
+                                        </div>
+                                        
+                                        <div id="advanced-filters" class="row g-3 d-none">
+                                            <div class="col-md-4">
+                                                <label for="search-district" class="form-label">District</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="search-district"
+                                                    name="district"
+                                                    placeholder="Enter district"
+                                                />
+                                            </div>
+                                            
+                                            <div class="col-md-4">
+                                                <label for="search-state" class="form-label">State</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="search-state"
+                                                    name="state"
+                                                    placeholder="Enter state"
+                                                />
+                                            </div>
+                                            
+                                            <div class="col-md-4">
+                                                <label for="search-medical" class="form-label">Medical Category</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="search-medical"
+                                                    name="medical_category"
+                                                    placeholder="Enter medical category"
+                                                />
+                                            </div>
+                                            
+                                            <div class="col-md-4">
+                                                <label for="search-enrolment" class="form-label">Date of Enrolment</label>
+                                                <input
+                                                    type="date"
+                                                    class="form-control"
+                                                    id="search-enrolment"
+                                                    name="date_of_enrolment"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row mt-3">
+                                        <div class="col-12">
+                                            <button
+                                                type="button"
+                                                id="toggle-advanced-filters"
+                                                class="btn btn-link"
+                                            >
+                                                Show Advanced Filters
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex justify-content-end mt-3">
+                                        <button
+                                            type="button"
+                                            id="reset-search"
+                                            class="btn btn-outline-secondary me-2"
+                                        >
+                                            Reset
+                                        </button>
+                                        <button
+                                            type="submit"
+                                            class="btn btn-primary"
+                                            id="search-button"
+                                        >
+                                            Search
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <span>Search Results</span>
+                                <span id="search-count" class="badge bg-primary">0 records found</span>
+                            </div>
+                            <div class="card-body">
+                                <div id="search-message" class="alert alert-info">
+                                    Use the search filters above to find Agniveer records.
+                                </div>
+                                
+                                <div id="search-results-container" class="table-responsive d-none">
+                                    <table id="search-results" class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Batch No.</th>
+                                                <th>No.</th>
+                                                <th>Rank</th>
+                                                <th>Name</th>
+                                                <th>Date of Enrolment</th>
+                                                <th>District</th>
+                                                <th>State</th>
+                                                <th>Medical Category</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Agniveer Page -->
+                <div id="add-page" class="page-content d-none">
+                    <div class="container-fluid py-3">
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h2 class="section-title">Add a New Agniveer</h2>
+                            </div>
+                        </div>
+                        
+                        <div id="add-success" class="alert alert-success d-none" role="alert">
+                            Agniveer information has been successfully added to the database.
+                        </div>
+                        
+                        <div id="add-error" class="alert alert-danger d-none" role="alert"></div>
+                        
+                        <div id="validation-errors" class="alert alert-danger d-none">
+                            <h5>Please correct the following errors:</h5>
+                            <ul id="error-list"></ul>
+                        </div>
+                        
+                        <form id="add-agniveer-form">
+                            <!-- Section 1: Personal Information -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    Personal Information
+                                </div>
+                                <div class="card-body">
+                                    <div class="row g-3">
+                                        <div class="col-md-4">
+                                            <label for="batch_no" class="form-label">Batch No.</label>
+                                            <input type="text" class="form-control" id="batch_no" name="batch_no" />
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <label for="number" class="form-label">No.</label>
+                                            <input type="text" class="form-control" id="number" name="number" />
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <label for="rank" class="form-label">Rank</label>
+                                            <input type="text" class="form-control" id="rank" name="rank" />
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <label for="name" class="form-label">Name</label>
+                                            <input type="text" class="form-control" id="name" name="name" />
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <label for="civil_education" class="form-label">Civil Education</label>
+                                            <input type="text" class="form-control" id="civil_education" name="civil_education" />
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <label for="date_of_birth" class="form-label">Date of Birth</label>
+                                            <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" />
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <label for="date_of_enrolment" class="form-label">Date of Enrolment (DOE)</label>
+                                            <input type="date" class="form-control" id="date_of_enrolment" name="date_of_enrolment" />
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <label for="medical_category" class="form-label">Medical Category</label>
+                                            <input type="text" class="form-control" id="medical_category" name="medical_category" />
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <label for="date_of_training_commenced" class="form-label">Date of Training Commenced</label>
+                                            <input type="date" class="form-control" id="date_of_training_commenced" name="date_of_training_commenced" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Section 2: Identification -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    Identification
+                                </div>
+                                <div class="card-body">
+                                    <div class="row g-3">
+                                        <div class="col-md-4">
+                                            <label for="account_number" class="form-label">Account Number</label>
+                                            <input type="text" class="form-control" id="account_number" name="account_number" />
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <label for="pan_card_number" class="form-label">PAN Card Number</label>
+                                            <input type="text" class="form-control" id="pan_card_number" name="pan_card_number" />
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <label for="aadhar_card_number" class="form-label">Aadhar Card Number</label>
+                                            <input type="text" class="form-control" id="aadhar_card_number" name="aadhar_card_number" />
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <label for="identification_mark_1" class="form-label">Identification Mark (a)</label>
+                                            <input type="text" class="form-control" id="identification_mark_1" name="identification_mark_1" />
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <label for="identification_mark_2" class="form-label">Identification Mark (b)</label>
+                                            <input type="text" class="form-control" id="identification_mark_2" name="identification_mark_2" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Section 3: Home Address -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    Home Address
+                                </div>
+                                <div class="card-body">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="village" class="form-label">Village (Vill.)</label>
+                                            <input type="text" class="form-control" id="village" name="village" />
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <label for="street" class="form-label">Street</label>
+                                            <input type="text" class="form-control" id="street" name="street" />
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <label for="tehsil" class="form-label">Tehsil or Taluka Office (T.O.)</label>
+                                            <input type="text" class="form-control" id="tehsil" name="tehsil" />
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <label for="post_office" class="form-label">Post Office (P.O.)</label>
+                                            <input type="text" class="form-control" id="post_office" name="post_office" />
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <label for="police_station" class="form-label">Police Station (P.S.)</label>
+                                            <input type="text" class="form-control" id="police_station" name="police_station" />
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <label for="district" class="form-label">District (Dist.)</label>
+                                            <input type="text" class="form-control" id="district" name="district" />
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <label for="state" class="form-label">State</label>
+                                            <input type="text" class="form-control" id="state" name="state" />
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <label for="pin_code" class="form-label">PIN Code</label>
+                                            <input type="text" class="form-control" id="pin_code" name="pin_code" />
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <label for="nearest_railway_station" class="form-label">Nearest Railway Station (NRS)</label>
+                                            <input type="text" class="form-control" id="nearest_railway_station" name="nearest_railway_station" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Section 4: Next of Kin (NOK) Details -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    Next of Kin (NOK) Details
+                                </div>
+                                <div class="card-body">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="nok_name" class="form-label">Name of NOK</label>
+                                            <input type="text" class="form-control" id="nok_name" name="nok_name" />
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <label for="nok_relationship" class="form-label">Relationship</label>
+                                            <input type="text" class="form-control" id="nok_relationship" name="nok_relationship" />
+                                        </div>
+                                        
+                                        <div class="col-12">
+                                            <div class="form-check mb-3">
+                                                <input class="form-check-input" type="checkbox" id="same_address" />
+                                                <label class="form-check-label" for="same_address">
+                                                    Same as Permanent Address
+                                                </label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <label for="nok_village" class="form-label">Village (Vill.)</label>
+                                            <input type="text" class="form-control" id="nok_village" name="nok_village" />
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <label for="nok_tehsil" class="form-label">Tehsil or Taluka Office (T.O.)</label>
+                                            <input type="text" class="form-control" id="nok_tehsil" name="nok_tehsil" />
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <label for="nok_post_office" class="form-label">Post Office (P.O.)</label>
+                                            <input type="text" class="form-control" id="nok_post_office" name="nok_post_office" />
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <label for="nok_police_station" class="form-label">Police Station (P.S.)</label>
+                                            <input type="text" class="form-control" id="nok_police_station" name="nok_police_station" />
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <label for="nok_district" class="form-label">District</label>
+                                            <input type="text" class="form-control" id="nok_district" name="nok_district" />
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <label for="nok_state" class="form-label">State</label>
+                                            <input type="text" class="form-control" id="nok_state" name="nok_state" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Section 5: Miscellaneous -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    Miscellaneous
+                                </div>
+                                <div class="card-body">
+                                    <div class="row g-3">
+                                        <div class="col-md-4">
+                                            <label for="sports_played" class="form-label">Sports Played & Level</label>
+                                            <input type="text" class="form-control" id="sports_played" name="sports_played" />
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <label for="hobbies" class="form-label">Hobbies & Level</label>
+                                            <input type="text" class="form-control" id="hobbies" name="hobbies" />
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <label for="ncc" class="form-label">NCC (If Yes, Level)</label>
+                                            <input type="text" class="form-control" id="ncc" name="ncc" />
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <label for="police_verification_status" class="form-label">Police Verification Status</label>
+                                            <select class="form-select" id="police_verification_status" name="police_verification_status">
+                                                <option value="Completed">Completed</option>
+                                                <option value="Not Completed" selected>Not Completed</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-4 text-center">
+                                        <button type="submit" class="btn btn-primary btn-lg" id="submit-button">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Data Management Page -->
+                <div id="manage-page" class="page-content d-none">
+                    <div class="container-fluid py-3">
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h2 class="section-title">Data Management</h2>
+                            </div>
+                        </div>
+                        
+                        <div id="manage-success" class="alert alert-success d-none" role="alert"></div>
+                        <div id="manage-error" class="alert alert-danger d-none" role="alert"></div>
+                        
+                        <div class="card mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <span>Import & Export</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    <i data-feather="upload"></i>
+                                                    Import Data
+                                                </h5>
+                                                <p class="card-text">
+                                                    Import Agniveer records from CSV or Excel files. The system will match column headers with the database fields.
+                                                </p>
+                                                <button
+                                                    class="btn btn-primary"
+                                                    id="import-button"
+                                                >
+                                                    <i data-feather="upload"></i>
+                                                    Import from File
+                                                </button>
+                                                <input type="file" id="import-file" class="d-none" accept=".csv,.xlsx" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    <i data-feather="download"></i>
+                                                    Export Data
+                                                </h5>
+                                                <p class="card-text">
+                                                    Export all Agniveer records to CSV or Excel format for backup or reporting purposes.
+                                                </p>
+                                                <div class="btn-group">
+                                                    <button
+                                                        class="btn btn-outline-primary"
+                                                        id="export-csv"
+                                                    >
+                                                        <i data-feather="file-text"></i>
+                                                        Export as CSV
+                                                    </button>
+                                                    <button
+                                                        class="btn btn-primary"
+                                                        id="export-excel"
+                                                    >
+                                                        <i data-feather="file"></i>
+                                                        Export as Excel
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="alert alert-info">
+                                    <i data-feather="info"></i>
+                                    <span>
+                                        <strong>Note:</strong> For importing data, please ensure your spreadsheet has column headers that match the field names in the system.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5 class="mb-0">Search Records</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="manage-search-form">
+                                    <div class="row g-3">
+                                        <div class="col-md-4">
+                                            <label for="manage-search-name" class="form-label">Name</label>
+                                            <input type="text" class="form-control" id="manage-search-name" placeholder="Enter name">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="manage-search-batch" class="form-label">Batch No.</label>
+                                            <input type="text" class="form-control" id="manage-search-batch" placeholder="Enter batch number">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="manage-search-rank" class="form-label">Rank</label>
+                                            <input type="text" class="form-control" id="manage-search-rank" placeholder="Enter rank">
+                                        </div>
+                                        <div class="col-md-2 d-flex align-items-end">
+                                            <button type="button" id="manage-search-button" class="btn btn-primary w-100">Search</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <span>Agniveer Records</span>
+                                <span id="manage-count" class="badge bg-primary">0 records</span>
+                            </div>
+                            <div class="card-body">
+                                <div id="loading-indicator" class="d-flex justify-content-center align-items-center" style="height: 200px;">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                                
+                                <div id="manage-empty" class="alert alert-info d-none">
+                                    No Agniveer records found. Add new records using the "Add a New Agniveer" option from the homepage.
+                                </div>
+                                
+                                <div id="manage-table-container" class="table-responsive d-none">
+                                    <table id="manage-table" class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Batch No.</th>
+                                                <th>No.</th>
+                                                <th>Rank</th>
+                                                <th>Name</th>
+                                                <th>Date of Enrolment</th>
+                                                <th>District</th>
+                                                <th>State</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Chatbot -->
+            <div id="chatbot-toggle" class="chatbot-toggle">
+                <i data-feather="message-circle"></i>
+            </div>
+            
+            <div id="chatbot-container" class="chatbot-container d-none">
+                <div class="chatbot-header">
+                    <h5 class="m-0">ACDMS Assistant</h5>
+                    <button class="btn-close btn-close-white" id="chatbot-close"></button>
+                </div>
+                
+                <div id="chatbot-messages" class="chatbot-messages">
+                    <div class="message message-bot">
+                        Hello! I'm your ACDMS assistant. How can I help you today?
+                    </div>
+                </div>
+                
+                <div class="chatbot-input">
+                    <form id="chatbot-form" class="d-flex w-100">
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="chatbot-input"
+                            placeholder="Type your message..."
+                        />
+                        <button type="submit" class="btn btn-primary ms-2" id="chatbot-send">
+                            <i data-feather="send"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Modals -->
+            <!-- View Agniveer Modal -->
+            <div class="modal fade" id="view-modal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Agniveer Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="view-content"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Agniveer Modal -->
+            <div class="modal fade" id="edit-modal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit Agniveer</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="edit-form-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delete Confirmation Modal -->
+            <div class="modal fade" id="delete-modal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Confirm Delete</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to delete this record?</p>
+                            <p class="text-danger">This action cannot be undone.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-danger" id="confirm-delete">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/validation.js"></script>
+    <script src="/js/chatbot.js"></script>
+    <script src="/js/manageSearch.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>

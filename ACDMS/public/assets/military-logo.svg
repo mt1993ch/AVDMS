@@ -1,0 +1,17 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Military emblem with army styling -->
+  <circle cx="24" cy="24" r="22" fill="#1f3d0c" stroke="#d4b86a" stroke-width="2" />
+  
+  <!-- Star emblem -->
+  <path d="M24 10L26.5 18H35L28 23L31 31L24 26L17 31L20 23L13 18H21.5L24 10Z" fill="#d4b86a" />
+  
+  <!-- Leaf wreaths -->
+  <path d="M12 24C12 18 18 14 24 14" stroke="#d4b86a" stroke-width="1.5" />
+  <path d="M36 24C36 18 30 14 24 14" stroke="#d4b86a" stroke-width="1.5" />
+  
+  <!-- Bottom text area -->  
+  <rect x="14" y="32" width="20" height="6" rx="2" fill="#d4b86a" />
+  
+  <!-- ARC text suggestion -->
+  <text x="17" y="37" font-family="sans-serif" font-size="5" font-weight="bold" fill="#1f3d0c">ARC</text>
+</svg>

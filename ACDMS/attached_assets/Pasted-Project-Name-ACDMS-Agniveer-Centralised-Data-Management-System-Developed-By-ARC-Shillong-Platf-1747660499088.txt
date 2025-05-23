@@ -1,0 +1,254 @@
+Project Name:
+ACDMS – Agniveer Centralised Data Management System
+
+Developed By:
+ARC Shillong
+
+Platform:
+Offline Desktop Application for Windows OS
+
+Purpose:
+To manage and maintain detailed records of Agniveer recruits, with features for authentication, data entry, search, modification, and offline chatbot support.
+
+Application Overview
+The ACDMS application must be fully functional in offline mode. It will have the following major features:
+
+User authentication
+
+Homepage with key functional areas
+
+Add and manage recruit data
+
+Search database with filters
+
+Edit and update stored data
+
+Import and export functionalities
+
+Collapsible offline chatbot accessible from all screens
+
+Military-themed user interface with clear, readable design
+
+1. Authentication Requirements
+Login screen with fixed credentials:
+
+Username: admin
+
+Password: ARCShillong
+
+Simple and secure authentication mechanism
+
+Clear error messaging for invalid credentials
+
+2. Homepage Structure
+After login, the user is directed to the homepage which will include the following three options:
+
+Search Database
+Navigates to a search page with filter options to streamline data retrieval based on key fields.
+
+Add a New Agniveer
+Navigates to a detailed form for adding new Agniveer recruit information.
+
+Data Management
+Opens the full dataset in tabular form with options to view, edit, and delete entries.
+
+Additionally:
+
+A collapsible offline chatbot will be available at the bottom right corner of every page.
+
+3. Add a New Agniveer: Data Entry Form
+A separate form-based interface will be used to collect the following structured data:
+
+Section 1: Personal Information
+Batch No.
+
+No.
+
+Rank
+
+Name
+
+Civil Education
+
+Date of Birth
+
+Date of Enrolment (DOE)
+
+Medical Category
+
+Date of Training Commenced
+
+Section 2: Identification
+Account Number
+
+PAN Card Number
+
+Aadhar Card Number
+
+Identification Marks:
+
+(a)
+
+(b)
+
+Section 3: Home Address
+Village (Vill.)
+
+Street
+
+Tehsil or Taluka Office (T.O.)
+
+Post Office (P.O.)
+
+Police Station (P.S.)
+
+District (Dist.)
+
+State
+
+PIN Code
+
+Nearest Railway Station (NRS)
+
+Section 4: Next of Kin (NOK) Details
+Name of NOK
+
+Relationship
+
+Address Details:
+
+Village (Vill.)
+
+Tehsil or Taluka Office (T.O.)
+
+Post Office (P.O.)
+
+Police Station (P.S.)
+
+District
+
+State
+
+Include a checkbox: Same as Permanent Address
+
+Section 5: Miscellaneous
+Sports Played & Level
+
+Hobbies & Level
+
+NCC (If Yes, Level)
+
+Police Verification Status (Dropdown: Completed / Not Completed)
+
+At the end of the form, a Submit button will store the data into the local database (SQLite or similar).
+
+4. Search Database
+Separate page accessible from the homepage.
+
+Should include a search bar and multiple filters such as:
+
+Batch No.
+
+Rank
+
+Name
+
+District
+
+Medical Category
+
+Date of Enrolment, etc.
+
+Enable combination of filters and support partial match searching.
+
+Display results in a structured table.
+
+5. Data Management
+Complete dataset viewable in a scrollable table.
+
+Each entry should include options to:
+
+View Details
+
+Edit
+
+Delete
+
+Data editing must be intuitive, either inline or in a popup/modal format.
+
+Any changes should be auto-saved with validation checks.
+
+6. Offline Chatbot (LLM-powered)
+An embedded LLM-powered offline chatbot must be accessible on all pages.
+
+Location: Bottom right corner (collapsible/expandable).
+
+Chatbot functions:
+
+Provide assistance for using features
+
+Guide users in data entry and search
+
+Answer app-related queries
+
+Must be fully offline, using local embeddings or compatible local LLM tools
+
+7. Import and Export Features
+Enable Export of the entire dataset to CSV or Excel format
+
+Allow Import from CSV/Excel file with proper field mapping
+
+Buttons for these actions can be placed on either the Homepage or Data Management page
+
+8. UI/UX Requirements
+Theme: Military-styled interface (e.g., olive green, khaki, black, and sand tones)
+
+Font: Preferably monospaced or military-style fonts like Roboto Mono or Segoe UI
+
+Clear tab and button visibility
+
+User-friendly navigation
+
+High-contrast color scheme for readability
+
+All form fields must have labels and input validation
+
+Ensure bug-free, fast, and responsive design
+
+9. Technical Recommendations
+If the developer requires suggestions for tech stack:
+
+Frontend: Electron (with React or plain HTML/CSS/JS)
+
+Backend: Node.js or Python
+
+Database: SQLite (lightweight and offline-compatible)
+
+Chatbot Integration: LLM embedded locally using libraries such as llama.cpp, gpt4all, or transformers running offline
+
+Packaging: Electron Builder / PyInstaller to package into a .exe for Windows installation
+
+10. Final Deliverables
+The developer must provide the following:
+
+Executable File: Installable .exe version of ACDMS
+
+Clean Codebase:
+
+Structured folders for frontend, backend, and database
+
+Commented and maintainable code
+
+Documentation:
+
+README.md with setup instructions
+
+PDF user manual for installation and operation
+
+Offline Chatbot Integration
+
+Sample Dataset (CSV or DB)
+
+Import/Export Functionality
+
+Bug-Free, Tested Build

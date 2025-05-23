@@ -1,0 +1,21 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Base shield shape -->
+  <path d="M24 4L6 12L24 20L42 12L24 4Z" fill="#4b5320" />
+  <path d="M6 12V36L24 44V20L6 12Z" fill="#c3b091" />
+  <path d="M24 20V44L42 36V12L24 20Z" fill="#a89678" />
+  
+  <!-- Military star emblem -->
+  <path d="M24 8L26.5 13.5L32.5 14L28 18L29.5 24L24 21L18.5 24L20 18L15.5 14L21.5 13.5L24 8Z" fill="#e1c699" />
+  
+  <!-- Decorative elements -->
+  <path d="M14 28L18 26L22 28L18 30L14 28Z" fill="#f5f5f5" />
+  <path d="M26 28L30 26L34 28L30 30L26 28Z" fill="#f5f5f5" />
+  
+  <!-- Text placeholder (ARC) -->
+  <path d="M20 34H23M23 34H28M23 34V37" stroke="#f5f5f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Outline for clarity -->
+  <path d="M24 4L6 12L24 20L42 12L24 4Z" stroke="#333333" stroke-width="0.5" />
+  <path d="M6 12V36L24 44V20L6 12Z" stroke="#333333" stroke-width="0.5" />
+  <path d="M24 20V44L42 36V12L24 20Z" stroke="#333333" stroke-width="0.5" />
+</svg>
